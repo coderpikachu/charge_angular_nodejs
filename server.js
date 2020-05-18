@@ -23,13 +23,14 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
+    res.json({ message: "Welcome to swb application." });
 });
-
 
 require('./app/routes/auth.route')(app);
 require('./app/routes/user.route')(app);
 require('./app/routes/tutorial.route')(app);
+require('./app/routes/flat.route')(app);
+require('./app/routes/dormitory.route')(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

@@ -20,8 +20,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.flat = require("./flat.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.role = require("./role.model.js")(sequelize, Sequelize);
+db.dormitory = require("./dormitory.model.js")(sequelize, Sequelize);
+
+db.flat.hasMany(db.dormitory)
+db.dormitory.belongsTo(db.flat, { foreignKey: "flatId",})
 
 db.role.belongsToMany(db.user, {
     through: "user_roles",
